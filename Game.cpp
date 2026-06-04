@@ -96,7 +96,7 @@ void Game::Render() const
 
 	paddle.Draw();
 	ball.Draw();
-	
+	if (bricks.empty()) Console::WordWrap(18, 16, 1, "You win! Press R to play again."); //Prints out you win
 	// TODO #3 - Update render to render all bricks
 	for (auto brick : bricks) 
 		brick.Draw();
@@ -128,7 +128,11 @@ void Game::CheckCollision()
 	}
 
 	// TODO #6 - If no bricks remain, pause ball and display (render) victory text with R to reset
-	
+	if (bricks.empty())
+	{
+		ball.y_velocity = 0;
+		ball.x_velocity = 0;
+	}
 
 	if (paddle.Contains(ball.x_position + ball.x_velocity, ball.y_velocity + ball.y_position))
 	{
