@@ -18,6 +18,7 @@ void Game::Reset()
 	ball.visage = 'O';
 	ball.color = ConsoleColor::Cyan;
 	ResetBall();
+	isGameOver = false;
 
 	// TODO #2 - Add this brick and 4 more bricks to the vector
 	brick.width = 10;
