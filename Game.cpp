@@ -122,6 +122,7 @@ void Game::CheckCollision()
 				it = bricks.erase(it);
 				continue;
 			}
+
 		}
 		++it;
 	}
