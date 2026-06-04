@@ -96,7 +96,13 @@ void Game::Render() const
 
 	paddle.Draw();
 	ball.Draw();
-	if (bricks.empty()) Console::WordWrap(18, 16, 1, "You win! Press R to play again."); //Prints out you win
+
+	if (bricks.empty()) 
+		Console::WordWrap(18, 16, 1, "You win! PressR to play again."); //Prints out you win
+	
+	if (isGameOver == true)
+		Console::WordWrap(18, 16, 1, "You Lose! Press R to play again.");//Print out you Lose
+	
 	// TODO #3 - Update render to render all bricks
 	for (auto brick : bricks) 
 		brick.Draw();
@@ -140,4 +146,11 @@ void Game::CheckCollision()
 	}
 
 	// TODO #7 - If ball touches bottom of window, pause ball and display (render) defeat text with R to reset
+
+	if (ball.y_position >= WINDOW_HEIGHT)
+	{
+		ball.y_velocity = 0;
+		ball.x_velocity = 0;
+		isGameOver = true;
+	}
 }
